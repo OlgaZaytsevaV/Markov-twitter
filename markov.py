@@ -85,6 +85,8 @@ def tweet(chain):
     print(api.VerifyCredentials())
     status = api.PostUpdate(chain)
     print(status.text)
+    # previous = api.GetStatus()
+    # print(previous)
     pass
 
 
@@ -97,8 +99,15 @@ text = open_and_read_file(filenames)
 
 # Get a Markov chain
 chains = make_chains(text)
-our_tweet = make_text(chains)
-tweet(our_tweet)
+
+
+ask_user = "y"
+while ask_user == "y":
+    our_tweet = make_text(chains)
+    tweet(our_tweet)
+    ask_user = input("Would you like to tweet again:(y/n) ")
+
+
 
 # Your task is to write a new function tweet, that will take chains as input
 # tweet(chains)
